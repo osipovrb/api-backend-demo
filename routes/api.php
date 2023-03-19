@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\TokenController;
 Route::prefix('users')->group(function () {
     Route::post('/', [UserController::class, 'store']);
     Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/me', [UserController::class, 'me']);
         Route::get('/{user}', [UserController::class, 'show']);
         Route::get('/{user}/tokens', [UserController::class, 'tokens']);
     });

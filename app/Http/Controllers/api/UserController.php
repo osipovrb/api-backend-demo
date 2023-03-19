@@ -11,6 +11,7 @@ use App\Models\PersonalAccessToken;
 use App\Models\User;
 use App\Services\AuthService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
@@ -43,6 +44,11 @@ class UserController extends Controller
         return response()->json(
             PersonalAccessTokenResource::collection($user->tokens),
         );
+    }
+
+    public function me(Request $request): JsonResponse
+    {
+        return response()->json($request->user());
     }
 
 }
