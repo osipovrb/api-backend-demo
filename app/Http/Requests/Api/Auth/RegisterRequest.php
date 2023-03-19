@@ -10,7 +10,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'login' => ['required', 'string', 'min:3', 'max:20', 'alpha_dash', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
+            'password' => ['required', 'string', 'confirmed', 'min:8'],
         ];
     }
 }
